@@ -54,7 +54,7 @@ Subcategory
 
 Subcategory
     .where(name: 'personals 1', category_id: personals_category.id)
-    .first_or_create(name: 'personals 1', category_id: jobs_category.id)
+    .first_or_create(name: 'personals 1', category_id: personals_category.id)
 Subcategory
     .where(name: 'personals 2', category_id: personals_category.id)
     .first_or_create(name: 'personals 2', category_id: personals_category.id)
