@@ -1,3 +1,8 @@
+<p><% link_to 'rubylist', root_path %></p>
 <h1>
   <%= @listing.title %>
 </h1>
+<span>Posted <%= time_ago_in_words @listing.created_at %> ago</span>
+<p>
+  <%= @listing.description %>
+</p>

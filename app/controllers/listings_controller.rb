@@ -6,11 +6,13 @@ class ListingsController < ApplicationController
   def create
     @listing = Listing.new(listing_params)
 
-    unless @listing.save
+    if @listing.save
+      redirect_to root_path
+    else
       puts '===================='
       logger.debug @listing.errors.inspect
     end
-    redirect_to root_path
+
   end
 
     def show

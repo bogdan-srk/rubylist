@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160831114739) do
+ActiveRecord::Schema.define(version: 20160912110548) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -22,8 +22,10 @@ ActiveRecord::Schema.define(version: 20160831114739) do
     t.string   "city"
     t.string   "state"
     t.string   "zipcode"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "category_id"
+    t.integer  "subcategory_id"
   end
 
   create_table "subcategories", force: :cascade do |t|
