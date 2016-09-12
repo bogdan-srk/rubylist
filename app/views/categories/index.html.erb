@@ -9,6 +9,10 @@
 </ul>
 
 <br>
+<%= link_to 'post to classifieds', new_listing_path %>
+<br>
+
+<br>
 <%= link_to 'community', category_path(@community) %>
 <ul>
 <% @community.subcategories.each do |subcategory| %>
