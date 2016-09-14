@@ -1,5 +1,7 @@
 <html>
-<head></head>
+<head>
+  <%= javascript_include_tag 'listings.js' %>
+</head>
 <body>
 <%= form_for @listing do |f| %>
     <p>
@@ -16,7 +18,7 @@
     </p>
     <p>
       <%= f.label :subcategory_id %>
-      <%= f.select :subcategory_id, Subcategory.all.map { |c| [c.name, c.id]} %>
+      <%= f.select :subcategory_id, options_for_select([]) %>
     </p>
     <p>
       <%= f.label :city %>
