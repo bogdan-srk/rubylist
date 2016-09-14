@@ -7,7 +7,7 @@ class ListingsController < ApplicationController
     @listing = Listing.new(listing_params)
 
     if @listing.save
-      redirect_to root_path
+      redirect_to @listing
     end
 
   end

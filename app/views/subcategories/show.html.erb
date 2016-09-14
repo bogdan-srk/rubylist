@@ -1,1 +1,11 @@
-<p>subcategory</p>
+<p><%= params[:id] %> </p>
+
+<% if @listings.present? %>
+    <% @listings.each do |listing| %>
+        <h2><%= listing.title %></h2>
+        <span><%= listing.created_at.strftime('%B %D, %Y') %>, <%= listing.city %></span>
+        <p><%= listing.description %></p>
+    <% end %>
+<% else %>
+    <p>No listings found</p>
+<% end %>
