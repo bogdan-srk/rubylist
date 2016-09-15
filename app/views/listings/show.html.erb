@@ -1,8 +1,13 @@
-<p><% link_to 'rubylist', root_path %></p>
+<p>
+  <% link_to 'rubylist', root_path %></p>
 <h1>
   <%= @listing.title %>
 </h1>
 <span>Posted <%= time_ago_in_words @listing.created_at %> ago</span>
+<% if @listing.user == current_user %>
+    <span><%= link_to 'Edit', edit_listing_path %></span>
+    <span><%= link_to 'Delete', listing_path, data: {confirm: 'Are you sure?'}, method: :delete %></span>
+<% end %>
 <p>
   <%= @listing.description %>
 </p>

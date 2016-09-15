@@ -1,0 +1,13 @@
+<ul>
+  <% @listings.each do |listing| %>
+    <li>
+      <h4>
+        <%= link_to listing.title, listing %>
+      </h4>
+      <p>
+        <%= listing.description %>
+      </p>
+    </li>
+  <% end %>
+</ul>
+<%= link_to 'Back', :back %>

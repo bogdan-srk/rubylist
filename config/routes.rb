@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :listings do
@@ -20,6 +21,8 @@ Rails.application.routes.draw do
   match '/privacy', to: 'pages#privacy',  via: :get
   match '/about',   to: 'pages#about',    via: :get
   match '/contact', to: 'pages#contact',  via: :get
+
+  match '/mylistings', to: 'listings#mylistings', via: :get
 
   match '/subcategories/find_by_category', to: 'subcategories#find_by_category', via: :post
 end

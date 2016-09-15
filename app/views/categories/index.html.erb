@@ -8,10 +8,19 @@
   <li><%= link_to 'contact us', contact_path %></li>
 </ul>
 
+<% if user_signed_in? %>
+  <%= link_to 'My account', edit_user_registration_path %>
+  <%= link_to 'My listings', mylistings_path %>
+  <%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
+<% else %>
+    <%= link_to 'Sign In', new_user_session_path %>
+    <%= link_to 'Sign Up', new_user_registration_path %>
+<% end %>
+
 <%= form_tag search_listings_path, method: :get do |f| %>
     <%= text_field_tag :search, nil, placeholder: 'Search...' %>
     <%= text_field_tag :location, nil, placeholder: 'Near...' %>
-    <%= select_tag :category, options_for_select(Category.all.map { |c| [c.name, c.id]}) %>
+    <%= select_tag :category, options_for_select(Category.all.map { |c| [c.name, c.id] }) %>
     <%= submit_tag 'Search' %>
 <% end %>
 
