@@ -1,4 +1,8 @@
 class ListingsController < ApplicationController
+
+  before_filter :authenticate_user!, only: [:new, :create]
+  before_filter :is_user?, only: [:edit, :update, :destroy]
+
   def new
     @listing = Listing.new
   end
@@ -8,6 +12,8 @@ class ListingsController < ApplicationController
     @listing.user = current_user
     if @listing.save
       redirect_to @listing
+    else
+      flash[:alert] = @listing.errors.full_messages.to_sentence
     end
   end
 
@@ -42,5 +48,12 @@ class ListingsController < ApplicationController
   private
   def listing_params
     params.require(:listing).permit(:title, :description, :city, :state, :zipcode, :category_id, :subcategory_id)
+  end
+
+  def is_user
+    @listing = Listing.find(params[:id])
+    unless current_user == @listing.user
+      redirect_to root_path, alert: 'You are not user of this listing.'
+    end
   end
 end
