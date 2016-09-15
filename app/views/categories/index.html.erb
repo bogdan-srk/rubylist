@@ -1,12 +1,19 @@
 <ul>
-  <li><%= link_to 'help and faq',           help_path %></li>
-  <li><%= link_to 'avoid scams and fraud',  scams_path %></li>
-  <li><%= link_to 'personal safety tips',   safety_path %></li>
-  <li><%= link_to 'terms of use',           terms_path %></li>
-  <li><%= link_to 'privacy policy',         privacy_path %></li>
-  <li><%= link_to 'about rubyslist',        about_path %></li>
-  <li><%= link_to 'contact us',             contact_path %></li>
+  <li><%= link_to 'help and faq', help_path %></li>
+  <li><%= link_to 'avoid scams and fraud', scams_path %></li>
+  <li><%= link_to 'personal safety tips', safety_path %></li>
+  <li><%= link_to 'terms of use', terms_path %></li>
+  <li><%= link_to 'privacy policy', privacy_path %></li>
+  <li><%= link_to 'about rubyslist', about_path %></li>
+  <li><%= link_to 'contact us', contact_path %></li>
 </ul>
+
+<%= form_tag search_listings_path, method: :get do |f| %>
+    <%= text_field_tag :search, nil, placeholder: 'Search...' %>
+    <%= text_field_tag :location, nil, placeholder: 'Near...' %>
+    <%= select_tag :category, options_for_select(Category.all.map { |c| [c.name, c.id]}) %>
+    <%= submit_tag 'Search' %>
+<% end %>
 
 <br>
 <%= link_to 'post to classifieds', new_listing_path %>
@@ -15,16 +22,16 @@
 <br>
 <%= link_to 'community', category_path(@community) %>
 <ul>
-<% @community.subcategories.each do |subcategory| %>
-    <li><%= link_to subcategory.name, category_subcategory_path(@community, subcategory)  %></li>
-<% end %>
+  <% @community.subcategories.each do |subcategory| %>
+      <li><%= link_to subcategory.name, category_subcategory_path(@community, subcategory) %></li>
+  <% end %>
 </ul>
 
 <br>
 <%= link_to 'housing', category_path(@housing) %>
 <ul>
   <% @housing.subcategories.each do |subcategory| %>
-      <li><%= link_to subcategory.name, category_subcategory_path(@housing, subcategory)  %></li>
+      <li><%= link_to subcategory.name, category_subcategory_path(@housing, subcategory) %></li>
   <% end %>
 </ul>
 
@@ -32,7 +39,7 @@
 <%= link_to 'jobs', category_path(@jobs) %>
 <ul>
   <% @jobs.subcategories.each do |subcategory| %>
-      <li><%= link_to subcategory.name, category_subcategory_path(@jobs, subcategory)  %></li>
+      <li><%= link_to subcategory.name, category_subcategory_path(@jobs, subcategory) %></li>
   <% end %>
 </ul>
 
@@ -40,7 +47,7 @@
 <%= link_to 'personals', category_path(@personals) %>
 <ul>
   <% @personals.subcategories.each do |subcategory| %>
-      <li><%= link_to subcategory.name, category_subcategory_path(@personals, subcategory)  %></li>
+      <li><%= link_to subcategory.name, category_subcategory_path(@personals, subcategory) %></li>
   <% end %>
 </ul>
 
@@ -48,7 +55,7 @@
 <%= link_to 'services', category_path(@services) %>
 <ul>
   <% @services.subcategories.each do |subcategory| %>
-      <li><%= link_to subcategory.name, category_subcategory_path(@services, subcategory)  %></li>
+      <li><%= link_to subcategory.name, category_subcategory_path(@services, subcategory) %></li>
   <% end %>
 </ul>
 
@@ -56,6 +63,6 @@
 <%= link_to 'for sale', category_path(@sale) %>
 <ul>
   <% @sale.subcategories.each do |subcategory| %>
-      <li><%= link_to subcategory.name, category_subcategory_path(@sale, subcategory)  %></li>
+      <li><%= link_to subcategory.name, category_subcategory_path(@sale, subcategory) %></li>
   <% end %>
 </ul>

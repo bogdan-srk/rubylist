@@ -9,15 +9,18 @@ class ListingsController < ApplicationController
     if @listing.save
       redirect_to @listing
     end
-
   end
 
-    def show
-      @listing = Listing.find(params[:id])
-    end
-
-    private
-    def listing_params
-      params.require(:listing).permit(:title, :description, :city, :state, :zipcode, :category_id, :subcategory_id)
-    end
+  def show
+    @listing = Listing.find(params[:id])
   end
+
+  def search
+    @listings = Listing.search(params)
+  end
+
+  private
+  def listing_params
+    params.require(:listing).permit(:title, :description, :city, :state, :zipcode, :category_id, :subcategory_id)
+  end
+end
